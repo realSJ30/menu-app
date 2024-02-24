@@ -43,14 +43,21 @@ const Login = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (!loading) {
       setLoading(true);
-      await signInWithEmailPassowrd(values);
+      const user = await signInWithEmailPassowrd(values);
+      if (!user) {
+        form.setError("email", { message: "Email/Password invalid!" });
+      }
+      setLoading(false);
     }
   };
 
   const onGoogleSignIn = async () => {
     if (!loading) {
       setLoading(true);
-      await signInWithGoogle();
+      const user = await signInWithGoogle();
+      if (!user) {
+        form.setError("email", { message: "Email/Password invalid!" });
+      }
       setLoading(false);
     }
   };

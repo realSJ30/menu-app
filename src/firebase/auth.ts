@@ -22,13 +22,26 @@ export const createUserWithEmailPassword = async ({ email, password }: AuthCrede
     }
 };
 
-export const signInWithEmailPassowrd = ({ email, password }: AuthCredentialsProps) => {
-    return signInWithEmailAndPassword(auth, email, password);
+export const signInWithEmailPassowrd = async ({ email, password }: AuthCredentialsProps) => {
+    try {
+        const user = await signInWithEmailAndPassword(auth, email, password);
+        return user;
+    } catch (error) {
+        console.log('Error', error)
+        return null;
+    }
 };
 
 export const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+        const user = await signInWithPopup(auth, provider);
+        return user;
+    } catch (error) {
+        console.log('Error', error)
+        return null;
+    }
+
 };
 
 export const signOutUser = () => {
