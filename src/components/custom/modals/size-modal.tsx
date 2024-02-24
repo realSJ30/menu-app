@@ -18,12 +18,14 @@ import { pushData, updateData } from "@/firebase/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSizeModal } from "@/hooks/use-size-modal";
 import { useAuth } from "@/hooks/use-auth";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2).max(16),
 });
 
 const SizeModal = () => {
+  const { toast } = useToast();
   const { currentUser } = useAuth();
   const {
     isOpen,
@@ -61,10 +63,18 @@ const SizeModal = () => {
             data: values,
             path: `${currentUser.uid}/size`,
           });
+          toast({
+            title: "Succefully Added!",
+            description: `Added ${values.name} to sizes.`,
+          });
         } else {
           updateData({
             data: values,
             path: `${currentUser.uid}/size/${defaultSize.id}`,
+          });
+          toast({
+            title: "Succefully Updated!",
+            description: `Updated ${values.name}`,
           });
         }
       }

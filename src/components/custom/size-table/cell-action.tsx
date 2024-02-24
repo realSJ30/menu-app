@@ -50,6 +50,10 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
           path: `${currentUser?.uid}/size/${data.id}`,
         });
         setToggleFetch(!toggleFetch);
+        toast({
+          title: "Successfully Removed!",
+          description: `Removed ${data.name} in sizes.`,
+        });
       } else {
         toast({
           variant: "destructive",

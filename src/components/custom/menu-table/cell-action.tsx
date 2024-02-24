@@ -45,7 +45,6 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
         toast({
           title: "Successfully Removed!",
           description: `Removed ${data.name} from menu.`,
-          variant: "destructive",
         });
       }
     } catch (error) {

@@ -50,6 +50,10 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
             path: `${currentUser.uid}/categories/${data.id}`,
           });
           setToggleFetch(!toggleFetch);
+          toast({
+            title: "Successfully Removed!",
+            description: `Removed ${data.name} in categories.`,
+          });
         } else {
           toast({
             variant: "destructive",

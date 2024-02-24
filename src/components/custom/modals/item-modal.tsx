@@ -103,7 +103,7 @@ const ItemModal = () => {
           });
           toast({
             title: "Succefully Added!",
-            description: `Added ${values.name} from menu.`,
+            description: `Added ${values.name} to menu.`,
           });
         } else {
           updateData({
@@ -112,7 +112,7 @@ const ItemModal = () => {
           });
           toast({
             title: "Succefully Updated!",
-            description: `Updated ${values.name} from menu.`,
+            description: `Updated ${values.name}.`,
           });
         }
       }

@@ -17,12 +17,14 @@ import { pushData, updateData } from "@/firebase/api";
 import { useCategoryModal } from "@/hooks/use-category-modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "@/hooks/use-auth";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2).max(16),
 });
 
 const CategoryModal = () => {
+  const { toast } = useToast();
   const { currentUser } = useAuth();
   const {
     isOpen,
@@ -60,10 +62,18 @@ const CategoryModal = () => {
             data: values,
             path: `${currentUser.uid}/categories`,
           });
+          toast({
+            title: "Succefully Added!",
+            description: `Added ${values.name} to categories.`,
+          });
         } else {
           updateData({
             data: values,
             path: `${currentUser.uid}/categories/${defaultCategory.id}`,
+          });
+          toast({
+            title: "Succefully Updated!",
+            description: `Updated ${values.name}`,
           });
         }
       }
