@@ -51,7 +51,7 @@ const Register = () => {
   return (
     <div className="h-full sm:h-screen px-4 sm:px-0 sm:flex items-center justify-center">
       <Container>
-        <div className="flex flex-col sm:w-[450px] justify-center items-center gap-y-4 border rounded-xl shadow-lg p-8 mt-28 sm:mt-0 ">
+        <div className="flex flex-col sm:w-[450px] justify-center items-center gap-y-4 border rounded-xl shadow-lg p-8 mt-28">
           <ShoppingBasket size={32} />
           <h1 className="font-bold text-xl">Register to MyMenu</h1>
           <hr />
