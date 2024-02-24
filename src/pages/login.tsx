@@ -41,7 +41,6 @@ const Login = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
     if (!loading) {
       setLoading(true);
       await signInWithEmailPassowrd(values);
@@ -56,9 +55,9 @@ const Login = () => {
     }
   };
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="h-full sm:h-screen px-4 sm:px-0 sm:flex items-center justify-center">
       <Container>
-        <div className="flex flex-col w-[450px] justify-center items-center gap-y-4 border rounded-xl shadow-lg p-8">
+        <div className="flex flex-col sm:w-[450px] justify-center items-center gap-y-4 border rounded-xl shadow-lg p-8 mt-32 sm:mt-0 ">
           <ShoppingBasket size={32} />
           <h1 className="font-bold text-xl">Login to MyMenu</h1>
           <hr />

@@ -49,72 +49,71 @@ const Register = () => {
   };
 
   return (
-    <>
-      <div className="h-screen flex items-center justify-center">
-        <Container>
-          <div className="flex flex-col w-[450px] justify-center items-center gap-y-4 border rounded-xl shadow-lg p-8">
-            <ShoppingBasket size={32} />
-            <h1 className="font-bold text-xl">Register to MyMenu</h1>
-            <hr />
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 w-full"
+    <div className="h-full sm:h-screen px-4 sm:px-0 sm:flex items-center justify-center">
+      <Container>
+        <div className="flex flex-col sm:w-[450px] justify-center items-center gap-y-4 border rounded-xl shadow-lg p-8 mt-28 sm:mt-0 ">
+          <ShoppingBasket size={32} />
+          <h1 className="font-bold text-xl">Register to MyMenu</h1>
+          <hr />
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-8 w-full"
+            >
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={loading}
+                        placeholder="email@sample.io"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={loading}
+                        type="password"
+                        placeholder="Password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button disabled={loading} className="w-full">
+                Create Account
+              </Button>
+
+              <Separator />
+              <p>Have an account?</p>
+              <Button
+                disabled={loading}
+                variant="outline"
+                className="w-full"
+                onClick={() => navigate("/")}
               >
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={loading}
-                          placeholder="email@sample.io"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={loading}
-                          type="password"
-                          placeholder="Password"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button disabled={loading} className="w-full">
-                  Create Account
-                </Button>
-                <Separator />
-                <p>Have an account?</p>
-                <Button
-                  disabled={loading}
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => navigate("/")}
-                >
-                  Sign in
-                </Button>
-              </form>
-            </Form>
-          </div>
-        </Container>
-      </div>
-    </>
+                Sign in
+              </Button>
+            </form>
+          </Form>
+        </div>
+      </Container>
+    </div>
   );
 };
 

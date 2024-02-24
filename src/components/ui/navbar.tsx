@@ -3,6 +3,12 @@ import { CircleUserRound, ShoppingBasket } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./button";
 import { useAuth } from "@/hooks/use-auth";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./tooltip";
 
 const Navbar = () => {
   const { currentUser } = useAuth();
@@ -14,7 +20,7 @@ const Navbar = () => {
     return !currentUser ? false : true;
   };
   return (
-    <div className="fixed top-0 inset-x-0 z-50 bg-white flex items-center justify-between p-8 border borde-b border-muted">
+    <div className="fixed top-0 inset-x-0 z-50 bg-white flex items-center justify-between p-4 md:p-8 border borde-b border-muted">
       <Link
         to="/"
         className="flex items-center gap-x-2 text-black hover:text-orange-600 transition-colors"
@@ -25,10 +31,18 @@ const Navbar = () => {
 
       {showLogout() && (
         <div className="flex gap-x-2">
-          {" "}
           <div className="flex items-center gap-x-4 border border-dashed border-neutral-700 rounded-lg p-2 w-auto ">
-            <CircleUserRound />
-            <p className="text-sm">{currentUser?.email}</p>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <CircleUserRound />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{currentUser?.email}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <p className="text-sm hidden sm:block">{currentUser?.email}</p>
           </div>
           <Button onClick={handleLogout}>Logout</Button>
         </div>

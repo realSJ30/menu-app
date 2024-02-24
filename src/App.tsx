@@ -9,7 +9,6 @@ const App = () => {
       <AuthProvider>
         <Router>
           <Toaster />
-
           <Navbar />
           <RoutesComponent />
         </Router>

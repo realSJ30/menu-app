@@ -82,7 +82,7 @@ const Dashboard = () => {
   return (
     <Container>
       <ModalProviders />
-      <div className="flex flex-col mt-36 px-4 lg:px-6 xl:px-0">
+      <div className="flex flex-col mt-24 md:mt-36 px-4 lg:px-6 xl:px-0">
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-xl">Dashboard</h3>
           <DropdownMenu>
